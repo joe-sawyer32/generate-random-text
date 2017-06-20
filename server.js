@@ -5,7 +5,7 @@ const port = 8000;
 
 app.get("/lorem", function(request, response) {
   var output = loremIpsum({
-    count: 1,
+    count: 3,
     units: "paragraphs",
     format: "html"
   });
