@@ -1,10 +1,23 @@
 const express = require("express");
 const app = express();
 const loremIpsum = require("lorem-ipsum");
-const output = loremIpsum({ count: 3, units: "paragraphs", format: "html" });
 const port = 8000;
 
-app.use("/lorem", function(request, response) {
+app.get("/lorem", function(request, response) {
+  var output = loremIpsum({
+    count: 1,
+    units: "paragraphs",
+    format: "html"
+  });
+  response.send(output);
+});
+
+app.get("/lorem/:count", function(request, response) {
+  var output = loremIpsum({
+    count: request.params.count,
+    units: "paragraphs",
+    format: "html"
+  });
   response.send(output);
 });
 
